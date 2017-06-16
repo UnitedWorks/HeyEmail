@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hey Email!</title>
+    <style media="screen">
+      * {
+        transition: 2s;
+      }
+      body {
+        margin: 0;
+      }
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background: #3C3EFF;
+        height: 100vh;
+        width: 100vw;
+        font-family: sans-serif;
+        color: white;
+        opacity: 0;
+      }
+      div.visible {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3>📨 Opening Email 📨</h3>
+    </div>
+  </body>
+  <script type="text/javascript">
+    setTimeout(function() {
+      document.querySelector('div').classList.add('visible');
+    }, 0);
+    location.href.split('?').slice(1).forEach(function(slice) {
+      var param = slice.split('=');
+      if (param[0] === 'email') {
+        console.log(param[1]);
+        window.location.href = 'mailto:'.concat(param[1]);
+      }
+    });
+  </script>
+</html>
